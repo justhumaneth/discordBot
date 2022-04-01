@@ -5,13 +5,12 @@ from dotenv import load_dotenv
 from discord.ext import commands
 
 load_dotenv()
+# put your DISCORD_TOKEN in 'Secrets'
 TOKEN = os.getenv('DISCORD_TOKEN')
-lfg = "https://media.discordapp.net/attachments/899994181982883841/955858688890003466/lfg1.png"
-hello = "https://media.discordapp.net/attachments/896685581487210580/955200075611660310/pepe_hello2.png"
-ban = "https://media.discordapp.net/attachments/896685581487210580/957806209849774080/BAN1.png"
-wenlambo = "https://media.discordapp.net/attachments/899994181982883841/955968441922228224/wen_lambo2.png"
 
-# 2
+# assign image, add more
+takeover = "./images/takeover.PNG"
+
 bot = commands.Bot(command_prefix='!')
 
 @bot.event
@@ -20,14 +19,9 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-    if '!lfg' in message.content.lower():
-        await message.channel.send(lfg)
-    if '!hello' in message.content.lower():
-        await message.channel.send(hello)
-    if '!ban' in message.content.lower():
-        await message.channel.send(ban)
-    if '!wenlambo' in message.content.lower():
-        await message.channel.send(wenlambo)
+# add your own specific command
+    if '!takeover' in message.content.lower():
+      # add link to image value
+        await message.channel.send(file=discord.File(takeover))
 
 bot.run(TOKEN)
-
